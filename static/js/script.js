@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // pangu 加载
     if (typeof pangu !== 'undefined' && typeof pangu.autoSpacingPage === 'function') {
-        pangu.autoSpacingPage();
+      pangu.spacingElementByClassName('theme-doc-markdown markdown');
     };
   // 为所有内容块添加滚动动画
   const animateOnScroll = () => {

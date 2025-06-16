@@ -89,7 +89,11 @@
 
 /* 页面过渡动画 */
 .page-transition {
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.15s ease-in-out;
+  -webkit-transition: opacity 0.15s ease-in-out;
+  -moz-transition: opacity 0.15s ease-in-out;
+  -ms-transition: opacity 0.15s ease-in-out;
+  -o-transition: opacity 0.15s ease-in-out;
 }
 
 /* 初始状态 */
@@ -121,7 +125,8 @@
 .markdown > img,
 .markdown > table {
   opacity: 0;
-  animation: slideInRight 0.5s ease-out forwards;
+  animation: slideInRight 0.3s ease-out forwards;
+  -webkit-animation: slideInRight 0.3s ease-out forwards;
 }
 
 .markdown > h1 { animation-delay: 0.1s; }
@@ -167,7 +172,8 @@
 .markdown img,
 .markdown table {
   opacity: 0;
-  animation: slideInRight 0.5s ease-out forwards;
+  animation: slideInRight 0.2s ease-out forwards;
+  -webkit-animation: slideInRight 0.2s ease-out forwards;
 }
 
 .markdown h1 { animation-delay: 0.1s; }
