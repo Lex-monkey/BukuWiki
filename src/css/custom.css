@@ -348,6 +348,11 @@
   animation: pulse 2s infinite;
 }
 
+/* 新增：折叠状态下隐藏除第一个外的其他卡片 */
+.developers-container.collapsed > :not(.contributor-card) {
+  display: none;
+}
+
 /* 保持与主页一致的响应式布局 */
 @media (max-width: 768px) {
   .developers-container {

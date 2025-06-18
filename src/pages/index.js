@@ -77,33 +77,92 @@ function HomepageHeader() {
   );
 }
 
-// 开发者卡片组件
+// 修改 DevelopersSection 组件
 function DevelopersSection() {
-  const [hovered, setHovered] = useState(false);
-  
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [contributors, setContributors] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (isExpanded && contributors.length === 0) {
+      setLoading(true);
+      fetch('https://api.github.com/repos/Moralts/BukuWiki/contributors')
+        .then(res => {
+          if (!res.ok) throw new Error('网络响应失败');
+          return res.json();
+        })
+        .then(data => {
+          setContributors(data);
+          setLoading(false);
+        })
+        .catch(err => {
+          setError(err.message);
+          setLoading(false);
+        });
+    }
+  }, [isExpanded]);
+
   return (
-    <section className="developers-container">
-      <Link
-        to="/contributors"
-        className="developer-card contributor-card"
-        style={{ 
-          animationDelay: '0.8s',
-          transform: hovered ? 'scale(1.05)' : 'scale(1)',
-          transition: 'transform 0.3s ease'
-        }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        <div className="contributor-card-content">
-          <span className="contributor-count">+ 查看所有贡献者</span>
-          <div className="expand-icon">
-            {/* 使用更现代的箭头图标 */}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19 9L12 16L5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
+    <section className={clsx("developers-container", { collapsed: !isExpanded })}>
+      {!isExpanded ? (
+        <div
+          className="developer-card contributor-card"
+          style={{
+            animationDelay: '0.8s',
+            cursor: 'pointer',
+            transition: 'transform 0.3s ease'
+          }}
+          onClick={() => setIsExpanded(true)}
+        >
+          <div className="contributor-card-content">
+            <span className="contributor-count">+ 查看所有贡献者</span>
+            <div className="expand-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 9L12 16L5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
           </div>
         </div>
-      </Link>
+      ) : (
+        <>
+          {loading && (
+            <div className={styles.loading}>
+              <div className="spinner" />
+              <p>正在加载贡献者数据...</p>
+            </div>
+          )}
+
+          {error && (
+            <div className={styles.error}>
+              <p>加载贡献者数据失败: {error}</p>
+            </div>
+          )}
+
+          {!loading && !error && (
+            <div className="developers-container">
+              {contributors.map((contributor, index) => (
+                <div
+                  key={contributor.id}
+                  className="developer-card"
+                  style={{
+                    animationDelay: `${0.2 * index + 0.5}s`,
+                    width: '220px'
+                  }}
+                >
+                  <img
+                    src={contributor.avatar_url}
+                    alt={`${contributor.login}的头像`}
+                    className="developer-avatar"
+                  />
+                  <h3 className="developer-name">{contributor.login}</h3>
+                  <p className="developer-role">{contributor.contributions} 次贡献</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </>
+      )}
     </section>
   );
 }
