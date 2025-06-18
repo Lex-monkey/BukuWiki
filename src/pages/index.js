@@ -36,11 +36,13 @@ function HomepageHeader() {
     // 优化动画触发时序
     const timer = setTimeout(() => {
       setIsVisible(true);
-      // 触发子元素动画
-      document.querySelectorAll('.hero__title span').forEach((el, i) => {
-        setTimeout(() => {
-          el.classList.add('letter-reveal');
-        }, i * 150);
+      // 批量处理DOM操作
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.hero__title span').forEach((el, i) => {
+          setTimeout(() => {
+            el.classList.add('letter-reveal');
+          }, i * 150);
+        });
       });
     }, 800);
     return () => clearTimeout(timer);

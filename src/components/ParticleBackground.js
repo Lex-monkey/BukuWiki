@@ -7,7 +7,7 @@ const ParticleBackground = () => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const particles = [];
-    const particleCount = 100;
+    const particleCount = 50; // 降低粒子数量
     
     // 设置画布尺寸为窗口大小
     const resizeCanvas = () => {
@@ -26,8 +26,8 @@ const ParticleBackground = () => {
         this.size = Math.random() * 3 + 1;
         this.speedX = Math.random() * 1 - 0.5;
         this.speedY = Math.random() * 1 - 0.5;
-        // 修改粒子颜色为亮青色系，在黑色背景下更醒目
-        this.color = `rgba(30, 230, 182, ${Math.random() * 0.5 + 0.2})`;
+        // 使用CSS变量保持颜色一致性
+        this.color = `rgba(var(--ifm-color-primary-rgb), ${Math.random() * 0.5 + 0.2})`;
       }
       
       update() {
@@ -53,7 +53,7 @@ const ParticleBackground = () => {
       }
     };
     
-    // 动画循环
+    // 在动画循环添加硬件加速优化
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
@@ -61,7 +61,14 @@ const ParticleBackground = () => {
         particles[i].update();
         particles[i].draw();
         
-        // 粒子连线
+        // 添加will-change优化
+        if (i === 0) {
+          canvas.style.willChange = 'transform';
+        }
+      }
+      
+      // 粒子连线
+      for (let i = 0; i < particles.length; i++) {
         for (let j = i; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
