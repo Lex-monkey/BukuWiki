@@ -24,6 +24,11 @@ const developers = [
     name: "Mr.LHBH",
     role: "项目文档的维护者",
     avatar: "/img/lhbh.png"
+  },
+  {
+    name: "苹果",
+    role: "社区维护者",
+    avatar: "/img/apple.png"
   }
 ];
 
@@ -74,19 +79,31 @@ function HomepageHeader() {
 
 // 开发者卡片组件
 function DevelopersSection() {
+  const [hovered, setHovered] = useState(false);
+  
   return (
     <section className="developers-container">
-      {developers.map((dev, index) => (
-        <div 
-          key={index} 
-          className="developer-card"
-          style={{ animationDelay: `${0.2 * index + 0.5}s` }}
-        >
-          <img src={dev.avatar} alt={dev.name} className="developer-avatar" />
-          <h3 className="developer-name">{dev.name}</h3>
-          <p className="developer-role">{dev.role}</p>
+      <Link
+        to="/contributors"
+        className="developer-card contributor-card"
+        style={{ 
+          animationDelay: '0.8s',
+          transform: hovered ? 'scale(1.05)' : 'scale(1)',
+          transition: 'transform 0.3s ease'
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
+        <div className="contributor-card-content">
+          <span className="contributor-count">+ 查看所有贡献者</span>
+          <div className="expand-icon">
+            {/* 使用更现代的箭头图标 */}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 9L12 16L5 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
-      ))}
+      </Link>
     </section>
   );
 }

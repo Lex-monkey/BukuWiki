@@ -23,26 +23,20 @@ const ParticleBackground = () => {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-        // 使用CSS变量保持颜色一致性
-        this.color = `rgba(var(--ifm-color-primary-rgb), ${Math.random() * 0.5 + 0.2})`;
+        this.size = Math.random() * 4 + 1;
+        this.speedX = Math.random() * 1.5 - 0.75;
+        this.speedY = Math.random() * 1.5 - 0.75;
+        this.color = `rgba(var(--ifm-color-primary-rgb), ${Math.random() * 0.7 + 0.3})`;
+        this.alphaSpeed = Math.random() * 0.02 + 0.005; // 添加透明度变化速度
+        this.maxAlpha = Math.random() * 0.5 + 0.5;
       }
       
       update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
+        this.x += Math.sin(Date.now() * 0.001 * (this.speedX + 0.5)) * 0.5; // 添加正弦波运动
+        this.y += Math.cos(Date.now() * 0.001 * (this.speedY + 0.5)) * 0.5;
         
-        if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-        if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-      }
-      
-      draw() {
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fill();
+        // 添加颜色渐变效果
+        this.alpha = (Math.sin(Date.now() * this.alphaSpeed) + 1) * this.maxAlpha / 2;
       }
     }
     

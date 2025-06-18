@@ -42,9 +42,18 @@
   animation: fadeInUp 0.6s forwards;
 }
 
+/* 复用开发者卡片悬停效果 */
 .developer-card:hover {
   transform: translateY(-5px) translateZ(0);
-  will-change: transform, box-shadow;
+  box-shadow: 0 12px 24px rgba(0,0,0,0.3); /* 增强阴影效果 */
+}
+
+/* 调整贡献者卡片动画延迟 */
+.developer-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+  transition: all 0.3s ease;
 }
 
 .developer-avatar {
@@ -280,4 +289,86 @@
 .navbar__item:hover:after {
   width: 100%;
   background-color: var(--ifm-color-primary); /* 保持颜色一致性 */
+}
+
+/* 贡献者卡片样式 */
+.contributor-card {
+  background: var(--ifm-background-surface-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 220px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+  animation: fadeInUp 0.6s forwards;
+}
+
+/* 增强贡献者卡片悬停效果 */
+.contributor-card:hover {
+  transform: translateY(-8px) translateZ(0);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.35);
+  background: var(--ifm-background-surface-color);
+}
+
+/* 新增卡片内容缩放效果 */
+.contributor-card-content:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* 优化展开箭头动画 */
+.expand-icon {
+  transition: transform 0.3s ease;
+}
+
+.contributor-card:hover .expand-icon {
+  transform: translateY(3px) rotate(180deg);
+  color: var(--ifm-color-primary);
+}
+
+.contributor-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--ifm-color-primary);
+}
+
+.contributor-count {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.expand-icon {
+  margin-top: 0.5rem;
+  animation: pulse 2s infinite;
+}
+
+/* 保持与主页一致的响应式布局 */
+@media (max-width: 768px) {
+  .developers-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* 新增粒子背景动态渐变色 */
+@keyframes particle-glow {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.particle-canvas {
+  animation: particle-glow 3s infinite alternate;
 }
