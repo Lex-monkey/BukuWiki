@@ -65,5 +65,7 @@ PCL 2 的下载方式龙腾猫跃**只在爱发电**提供了下载链接，你�
 
 你可以双击启动 PCL 2 ，这就是第三方启动器了。其他启动器例如 HMCL 启动器，同理，在上方的表格中找到链接，下载下来，按照 PCL 2 的步骤一步一步来即可。
 
+[接下来的教程？戳我！](https://docs.buku.wiki/PC/java/launch/meet-the-launchers)
+
 
 
