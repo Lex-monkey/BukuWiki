@@ -1,17 +1,6 @@
 /* 全局主题 */
-:root {
-  --ifm-color-primary: #28a77f; /* 改为主蓝绿色 */
-  --ifm-color-primary-dark: #239770;
-  --ifm-color-primary-darker: #1f8b66;
-  --ifm-color-primary-darkest: #177153;
-  --ifm-color-primary-light: #2fc29b;
-  --ifm-color-primary-lighter: #3acaa6;
-  --ifm-color-primary-lightest: #4ddac6;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-}
-
 [data-theme='dark'] {
-  --ifm-color-primary: #1de9b6; /* 暗色模式调整为亮青色 */
+  --ifm-color-primary: #1de9b6; 
   --ifm-color-primary-dark: #1ad9a0;
   --ifm-color-primary-darker: #15c58d;
   --ifm-color-primary-darkest: #0f9e70;
@@ -19,6 +8,86 @@
   --ifm-color-primary-lighter: #3bead0;
   --ifm-color-primary-lightest: #5cf2db;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  
+  /* 新增：深黑色背景 */
+  --ifm-background-color: #0a0a0a;
+  --ifm-background-surface-color: #121212;
+}
+
+/* 主页黑色主题覆盖 */
+.home-page {
+  background-color: var(--ifm-background-color);
+}
+
+/* 开发者卡片容器 */
+.developers-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 0;
+  flex-wrap: wrap;
+}
+
+/* 开发者卡片 */
+.developer-card {
+  background: var(--ifm-background-surface-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 220px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: transform, opacity;
+  animation: fadeInUp 0.6s forwards;
+}
+
+.developer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(30, 230, 182, 0.2);
+}
+
+.developer-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: block;
+  border: 2px solid var(--ifm-color-primary);
+}
+
+.developer-name {
+  text-align: center;
+  color: var(--ifm-color-primary-light);
+  margin-bottom: 0.5rem;
+}
+
+.developer-role {
+  text-align: center;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+/* 新增动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 粒子画布样式 */
+.particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 /* 标题栏阴影 */

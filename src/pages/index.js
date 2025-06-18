@@ -7,6 +7,26 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import FloatingElements from '@site/src/components/FloatingElements';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
+import ParticleBackground from '@site/src/components/ParticleBackground';
+
+// 开发者数据
+const developers = [
+  {
+    name: "RealCreeper",
+    role: "项目主要的贡献者",
+    avatar: "/img/realcreeper.jpg"
+  },
+  {
+    name: "Moralts",
+    role: "BukuWiki项目的开创者",
+    avatar: "/img/moralts.jpg"
+  },
+  {
+    name: "Mr.LHBH",
+    role: "项目文档的维护者",
+    avatar: "/img/lhbh.png"
+  }
+];
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
@@ -51,6 +71,25 @@ function HomepageHeader() {
   );
 }
 
+// 开发者卡片组件
+function DevelopersSection() {
+  return (
+    <section className="developers-container">
+      {developers.map((dev, index) => (
+        <div 
+          key={index} 
+          className="developer-card"
+          style={{ animationDelay: `${0.2 * index + 0.5}s` }}
+        >
+          <img src={dev.avatar} alt={dev.name} className="developer-avatar" />
+          <h3 className="developer-name">{dev.name}</h3>
+          <p className="developer-role">{dev.role}</p>
+        </div>
+      ))}
+    </section>
+  );
+}
+
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
 
@@ -70,11 +109,13 @@ export default function Home() {
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Minecraft 游玩教程">
-      <FloatingElements />
+      description="Minecraft 游玩教程"
+      className="home-page">
+      <ParticleBackground />
       <HomepageHeader />
       <main>
         <HomepageFeatures />
+        <DevelopersSection />
       </main>
     </Layout>
   );
