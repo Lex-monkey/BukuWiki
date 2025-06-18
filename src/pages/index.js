@@ -7,7 +7,6 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import FloatingElements from '@site/src/components/FloatingElements';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
-import ParticleBackground from '@site/src/components/ParticleBackground';
 
 // 开发者数据
 const developers = [
@@ -113,7 +112,7 @@ export default function Home() {
       title={`Hello from ${siteConfig.title}`}
       description="Minecraft 游玩教程"
       className="home-page">
-      <ParticleBackground />
+      {/* Delete粒子背景组件 */}
       <HomepageHeader />
       <main>
         <HomepageFeatures />
