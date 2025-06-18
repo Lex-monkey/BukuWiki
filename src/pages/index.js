@@ -36,16 +36,15 @@ function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
   const [isVisible, setIsVisible] = useState(false);
   
+  // 优化标题动画时序
   useEffect(() => {
-    // 优化动画触发时序
     const timer = setTimeout(() => {
       setIsVisible(true);
-      // 批量处理DOM操作
       requestAnimationFrame(() => {
         document.querySelectorAll('.hero__title span').forEach((el, i) => {
           setTimeout(() => {
             el.classList.add('letter-reveal');
-          }, i * 150);
+          }, i * 200); // 增加字母动画间隔时间
         });
       });
     }, 800);
@@ -146,7 +145,7 @@ function DevelopersSection() {
                   key={contributor.id}
                   className="developer-card"
                   style={{
-                    animationDelay: `${0.2 * index + 0.5}s`,
+                    animationDelay: `${0.3 * index + 0.6}s`, // 提高延迟系数
                     width: '220px'
                   }}
                 >

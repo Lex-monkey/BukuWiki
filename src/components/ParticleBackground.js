@@ -31,12 +31,11 @@ const ParticleBackground = () => {
         this.maxAlpha = Math.random() * 0.5 + 0.5;
       }
       
+      // 增加粒子运动速度变化的平滑度
       update() {
-        this.x += Math.sin(Date.now() * 0.001 * (this.speedX + 0.5)) * 0.5; // 添加正弦波运动
-        this.y += Math.cos(Date.now() * 0.001 * (this.speedY + 0.5)) * 0.5;
-        
-        // 添加颜色渐变效果
-        this.alpha = (Math.sin(Date.now() * this.alphaSpeed) + 1) * this.maxAlpha / 2;
+        this.x += Math.sin(Date.now() * 0.001 * (this.speedX + 0.5)) * 0.3; // 减小移动幅度
+        this.y += Math.cos(Date.now() * 0.001 * (this.speedY + 0.5)) * 0.3;
+        this.alpha = (Math.sin(Date.now() * this.alphaSpeed * 0.8) + 1) * this.maxAlpha / 2; // 降低透明度变化速度
       }
     }
     
