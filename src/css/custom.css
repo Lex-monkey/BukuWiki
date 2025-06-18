@@ -390,7 +390,19 @@
   }
 }
 
-/* 修改文档内容动画为从上到下 */
+/* 修改文档内容动画为从上到下的动画 */
+@keyframes slideInDown {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 调整文档内容动画速度和延迟 */
 .markdown > h1,
 .markdown > h2,
 .markdown > h3,
@@ -400,28 +412,24 @@
 .markdown > blockquote,
 .markdown > img,
 .markdown > table {
-  opacity: 0;
-  animation: slideInDown 0.5s ease-out forwards;
-  -webkit-animation: slideInDown 0.5s ease-out forwards;
+  animation: slideInDown 0.5s ease-out forwards; /* 将动画时长从0.3s恢复为0.5s */
 }
 
-/* 调整动画延迟形成逐行效果 */
 .markdown > h1 { animation-delay: 0.1s; }
-.markdown > h2 { animation-delay: 0.2s; }
-.markdown > h3 { animation-delay: 0.3s; }
-.markdown > p { animation-delay: 0.4s; }
-.markdown > ul, .markdown > ol { animation-delay: 0.5s; }
-.markdown > blockquote { animation-delay: 0.6s; }
-.markdown > img { animation-delay: 0.7s; }
-.markdown > table { animation-delay: 0.8s; }
+.markdown > h2 { animation-delay: 0.25s; }
+.markdown > h3 { animation-delay: 0.4s; }
+.markdown > p { animation-delay: 0.55s; } /* 增加各元素间的动画延迟间隔 */
+.markdown > ul, .markdown > ol { animation-delay: 0.7s; }
+.markdown > blockquote { animation-delay: 0.85s; }
+.markdown > img { animation-delay: 1.0s; }
+.markdown > table { animation-delay: 1.15s; }
 
-/* 保持代码块立即显示 */
-.markdown pre,
-.markdown code,
-.markdown .prism-code,
-.markdown .theme-code-block,
-.markdown .theme-code-block button {
-  opacity: 1 !important;
-  animation: none !important;
-  transform: none !important;
+/* 修改贡献者卡片动画持续时间 */
+.developer-card {
+  animation: fadeInUp 0.4s forwards; /* 从0.6s缩短到0.4s */
+}
+
+/* 调整导航栏悬停动画速度 */
+.navbar__item:after {
+  transition: width 0.3s ease-in-out; /* 从0.5s缩短到0.3s */
 }
