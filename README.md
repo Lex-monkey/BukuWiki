@@ -37,6 +37,8 @@ BukuWiki 是由一群 Minecraft 的社区爱好者一同维护的开源内容 Wi
   <img src="https://www.netlify.com/assets/badges/netlify-badge-color-accent.svg" alt="Deploys by Netlify" />
 </a>
 
+感谢 **Netlify** 为项目提供的开源计划支持！
+
 <h1 align="center">✒️为 Wiki 做出贡献</h1>
 
 **请认真阅读 BukuWiki 的 [编写规范](https://docs.buku.wiki/write-specifications) 以及 [贡献者条约](https://docs.buku.wiki/contributor-conventions)**
