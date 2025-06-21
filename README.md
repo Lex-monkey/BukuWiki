@@ -37,6 +37,8 @@ BukuWiki 是由一群 Minecraft 的社区爱好者一同维护的开源内容 Wi
   <img src="https://www.netlify.com/assets/badges/netlify-badge-color-accent.svg" alt="Deploys by Netlify" />
 </a>
 
+感谢 **Netlify** 为项目提供的开源计划支持！
+
 <h1 align="center">✒️为 Wiki 做出贡献</h1>
 
 **请认真阅读 BukuWiki 的 [编写规范](https://docs.buku.wiki/write-specifications) 以及 [贡献者条约](https://docs.buku.wiki/contributor-conventions)**
@@ -60,11 +62,15 @@ BukuWiki 是由一群 Minecraft 的社区爱好者一同维护的开源内容 Wi
 
 <h1 align="center">📄许可协议</h1>
 
-> 所有内容均采用 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh)。
+> 代码部分均采用 [MIT License](https://opensource.org/license/MIT)
+>
+> - 自由使用、修改、合并、分发及商业化软件，包括闭源专有项目，无需开源衍生作品
+
+> 除去代码部分均采用 [CC BY-NC-ND 4.0](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh)。
 >
 > - 必须注明原作者署名
 > - 禁止商业使用
-> - 禁止修改和再分发修改版本
-> - 禁止在未经许可的情况下复制和传播内容
+> - 允许重新混合、转换和构建素材
+> - 衍生作品保留原作品的许可声明
 
 </div>
