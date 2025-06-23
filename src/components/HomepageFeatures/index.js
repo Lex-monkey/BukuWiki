@@ -37,7 +37,6 @@ function Feature({Svg, title, description, delay}) {
               requestAnimationFrame(() => {
                 // 添加缩放动画和阴影效果
                 featureRef.current.style.transform = 'scale(1.05)';
-                featureRef.current.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
                 featureRef.current.style.transition = `
                   all 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67),
                   transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)
