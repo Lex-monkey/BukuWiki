@@ -1,80 +1,90 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import FloatingElements from '@site/src/components/FloatingElements';
-import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
-function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
-  const [isVisible, setIsVisible] = useState(false);
-  
-  useEffect(() => {
-    // 优化动画触发时序
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-      // 触发子元素动画
-      document.querySelectorAll('.hero__title span').forEach((el, i) => {
-        setTimeout(() => {
-          el.classList.add('letter-reveal');
-        }, i * 150);
-      });
-    }, 800);
-    return () => clearTimeout(timer);
-  }, []);
-
+function FeatureCard({ title, description, icon, link }) {
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner, {
-      [styles.heroVisible]: isVisible
-    })}>
-      <div className="container">
-        <Heading as="h1" className={clsx('hero__title', styles.titleAnimation)}>
-          {siteConfig.title.split('').map((char, i) => (
-            <span key={i} className={styles.letter}>{char}</span>
-          ))}
-        </Heading>
-        <p className={clsx('hero__subtitle', styles.subtitleAnimation)}>
-          {siteConfig.tagline}
-        </p>
-        <div className={clsx(styles.buttons, styles.buttonAnimation)}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/intro">
-            让我们开始吧 🥵
-          </Link>
-        </div>
+    <Link to={link} className={styles.featureCard}>
+      <div className={styles.featureIcon}>{icon}</div>
+      <div className={styles.featureContent}>
+        <h3>{title}</h3>
+        <p>{description}</p>
       </div>
-    </header>
+    </Link>
   );
 }
 
 export default function Home() {
-  const {siteConfig} = useDocusaurusContext();
-
-  useEffect(() => {
-    // 页面进入动画
-    const mainWrapper = document.querySelector('.main-wrapper');
-    if (mainWrapper) {
-      mainWrapper.classList.add('page-transition', 'page-entering');
-      
-      setTimeout(() => {
-        mainWrapper.classList.remove('page-entering');
-        mainWrapper.classList.add('page-entered');
-      }, 100);
-    }
-  }, []);
+  const { siteConfig } = useDocusaurusContext();
 
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Minecraft 游玩教程">
-      <FloatingElements />
-      <HomepageHeader />
-      <main>
-        <HomepageFeatures />
+      title={siteConfig.title}
+      description={siteConfig.tagline}
+    >
+      <main className={styles.main}>
+        <section className={styles.heroSection}>
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>{siteConfig.title}</h1>
+            <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
+            <div className={styles.heroButtons}>
+              <Link className={clsx('button button--primary', styles.heroBtn)} to="/intro">
+                快速开始
+              </Link>
+              <Link className={clsx('button button--secondary', styles.heroBtn)} to="/docs">
+                文档中心
+              </Link>
+            </div>
+          </div>
+        </section>
+        <section className={styles.featuresSection}>
+          <div className={styles.featuresGrid}>
+            <FeatureCard
+              title="新手入门"
+              description="从零开始，快速了解 Minecraft 的基础玩法与服务器加入方法。"
+              icon="🎮"
+              link="/intro"
+            />
+            <FeatureCard
+              title="常见问题"
+              description="遇到问题？这里有最全的解答和解决方案。"
+              icon="❓"
+              link="/faq"
+            />
+            <FeatureCard
+              title="进阶教程"
+              description="进阶玩法、插件、模组、自动化等内容一网打尽。"
+              icon="🚀"
+              link="/advanced"
+            />
+            <FeatureCard
+              title="社区与支持"
+              description="加入我们的社区，获取帮助，结识更多玩家。"
+              icon="💬"
+              link="/community"
+            />
+          </div>
+        </section>
+        {/* 新增 GitHub 贡献标题和概述 */}
+        <div style={{ width: '100%', textAlign: 'center', margin: '40px 0 0 0' }}>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: 8 }}>欢迎参与贡献！</h2>
+          <p style={{ color: '#4a5a6a', fontSize: '1.05rem', marginBottom: 18 }}>
+            发现内容有误或想补充资料？欢迎访问我们的 GitHub 仓库，提交你的建议或 PR，让知识库更完善。
+          </p>
+          <a
+            href="https://github.com/Moralts/BukuWiki"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.heroBtn}
+            style={{ display: 'inline-block', marginTop: 8, textDecoration: 'none' }}
+          >
+            在 GitHub 上一起做贡献
+          </a>
+        </div>
+        {/* 移除 footer 区块 */}
       </main>
     </Layout>
   );

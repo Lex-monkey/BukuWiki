@@ -13,162 +13,62 @@ sidebar_position: 2
 
 本篇提供两种安装方式，分别是 **在现有游戏上安装加载器** 和 **全新安装游戏和加载器** 两种方式，当然我们更加推荐适用后者，因为步骤少，环境干净，更适合我们。
 
-## 🔧 Forge 安装教程
+## 全新安装游戏和加载器
 
-### 适用场景
+我们先来看看如何 **全新安装游戏和加载器**，这是最简单也是最干净的方式。
 
-- 大型整合包和经典 Mod
-- 深度修改游戏机制的 Mod
-- 需要高度兼容性的项目
+打开你的 PCL2 启动器，在上方的标签栏中选择 **下载**：
 
-### 安装步骤
+![pcl-mod-download-choose](./assets/pcl-mod-download-choose.png)
 
-1. **下载 Forge 安装器**
+这就是 PCL 2 启动器的下载页面，我们先选择一个你想要安装模组加载器的版本，我们这边以 1.20.1 为例，因为 1.20.1 在高版本中模组百花齐放，点开正式版本，找到 1.20.1 ，点开它：
 
-   - 访问官方站点：[https://files.minecraftforge.net](https://files.minecraftforge.net)
-   - 选择与您 Minecraft 版本匹配的 Forge 版本
-   - 下载推荐版本（Recommended）的安装器
-2. **运行安装器**
+![pcl-mod-download-game-choose](./assets/pcl-mod-download-game-choose.png)
 
-   ```bash
-   # Windows系统：
-   双击下载的.jar文件运行
-   
-   # macOS/Linux系统：
-   在终端执行：java -jar 下载的文件名.jar
-   ```
-3. **选择安装选项**
+最上面是游戏名称，你可以任意更改这个游戏名字，只要认得出来就好。发现在版本号下面，有很多可选项目，他们就是**模组加载器**：
 
-   - 选择 "Install client"（客户端安装）
-   - 确认 Minecraft 安装路径正确
-   - 点击 "OK" 开始安装
-4. **启动游戏**
+![pcl-mod-download-game-loader](./assets/pcl-mod-download-game-loader.png)
 
-   - 打开 Minecraft 启动器
-   - 在配置文件中选择新创建的 "Forge" 配置
-   - 启动游戏验证安装
+选择一个你在前文选择的加载器，以 **Fabric** 为例，你会发现他会有很多版本，我们按理来说选择**最新版本**即可：
 
-### 安装 Mod
+![pcl-mod-download-fabric](./assets/pcl-mod-download-fabric.png)
 
-1. 下载 Mod 文件（.jar格式）
-2. 将文件放入游戏目录的`mods`文件夹：
-   ```
-   Windows: %appdata%\.minecraft\mods
-   macOS: ~/Library/Application Support/minecraft/mods
-   Linux: ~/.minecraft/mods
-   ```
-3. 启动Forge版本的游戏
+这时候，启动器会弹出来个 **Fabric API**，这是 **Fabric 模组**使用的加载器 API，模组在**调用加载器**的时候就需要用到 Fabric API，我们依旧选择最新版本即可：
 
-> ⚠️ 注意：不同Mod可能需要特定Forge版本，请仔细阅读Mod说明
+![pcl-mod-download-fabric-api](./assets/pcl-mod-download-fabric-api.png)
 
-## 🧵 Fabric 安装教程
+这个时候，点击底部的开始下载，**PCL 2 启动器就会帮你下载好游戏资源，自动帮你安装好模组加载器**。*无需担心，喝杯茶就好了）*
 
-### 适用场景
+![pcl-mod-download-start](./assets/pcl-mod-download-start.png)
 
-- 轻量级优化 Mod（如钠、锂）
-- 快速更新的 Mod
-- 需要高性能的玩家
+## 疑难解答
 
-### 安装步骤
+### 下载游戏失败？
 
-1. **安装 Fabric Loader**
+可能是镜像站或者官方资源站繁忙，也可能是你的网络不行。更换网络或者稍后再试。
 
-   - 访问官方站点：[https://fabricmc.net/use](https://fabricmc.net/use)
-   - 选择您的Minecraft版本
-   - 下载Fabric安装器（.exe或.jar）
-2. **运行安装器**
+### 模组加载器下载失败？
 
-   ```bash
-   # 所有平台通用方法：
-   java -jar fabric-installer.jar
-   ```
+网络不行。更换网络或者稍后再试。
 
-   - 选择 Minecraft 版本
-   - 确保选中 "Create profile"（创建配置文件）
-   - 点击 "Install"
-3. **安装 Fabric API**
+### 模组加载器安装失败？
 
-   - 下载 Fabric API：[https://www.curseforge.com/minecraft/mc-mods/fabric-api](https://www.curseforge.com/minecraft/mc-mods/fabric-api)
-   - 将下载的 .jar 文件放入`mods`文件夹
-4. **启动游戏**
+多试几次。*就是这样（）稍安勿躁（）*
 
-   - 在启动器中选择"Fabric"配置文件
-   - 启动游戏验证安装
+### 进游戏后在左下角没有出现修改信息？
 
-### 推荐工具
+请确保你正确选择加载器版本，再试一次。
 
-- **Mod Menu**：提供游戏内 Mod 管理界面
-- **Fabric Capes**：支持自定义披风
-- **Sodium**：显著提升游戏帧率
+## 启动游戏
 
-## 🌐 其他加载器选项
+回到主页，在左下角 版本选择 里面，选择刚刚安装好的版本，再点击主页的启动游戏即可。
 
-### Quilt
+进游戏后，主界面的左下角应该会写出当前加载器类型和加载器版本，如果有，那么恭喜你，正确安装了带有模组加载器的版本啦！
 
-- Fabric 的改进分支
-- 更好的 Mod 兼容性
-- 安装方式类似 Fabric
-- 官网：[https://quiltmc.org](https://quiltmc.org)
+## 关于手动安装模组加载器
 
-### LiteLoader
+**在现有游戏上安装加载器** 就是手动安装模组加载器，我们并不推荐初来乍到的你们这么去做。无论是步骤还是不确定因素太多了……
 
-- 轻量级脚本 Mod 支持
-- 可与 Forge 共存
-- 适用于轻量修改
-- 官网：[https://www.liteloader.com](https://www.liteloader.com)
+乖，听话 ~ 我们选择上面的自动安装会更好，知道不 ~
 
-### Rift (1.13)
-
-- 已停止更新
-- 仅适用于 1.13 版本的临时方案
-
-## 🚀 专业技巧
-
-1. **多版本共存**
-
-
-
-   通过创建不同启动配置，实现多个Mod环境共存
-2. **Mod 管理工具推荐**
-   - **CurseForge App**：官方 Mod 管理工具
-   - **GDLauncher**：开源跨平台启动器
-   - **MultiMC**：高级多实例管理
-3. **冲突解决步骤**
-
-   1. 移除所有 Mod
-   2. 逐个添加 Mod 测试
-   3. 检查游戏日志查找错误
-   4. 查看 Mod 依赖要求
-   5. 尝试更新或更换版本
-
-## ❓ 常见问题解答
-
-### Q：Forge 和 Fabric能同时安装吗？
-
-可以！但**不能同时运行**。通过创建不同的启动配置，您可以轻松切换。
-
-### Q：为什么安装后游戏崩溃？
-
-常见原因：
-
-- Mod 版本与游戏版本不匹配
-- 缺少必要依赖 Mod
-- Mod 之间存在冲突
-- 分配的内存不足
-
-
-
-### Q：哪里可以安全下载 Mod？
-
-推荐平台：
-
-- [CurseForge](https://www.curseforge.com/minecraft/mc-mods)
-- [Modrinth](https://modrinth.com)
-- [MC百科](https://www.mcmod.cn)（中文）
-
-## 结语
-
-掌握 Mod 加载器是开启 Minecraft 无限可能的第一步！根据您的需求选择 Forge 或 Fabric，遵循本指南的步骤操作，您将很快建立自己的模组世界。遇到问题时，请参考故障排除部分或访问 Mod 社区获取支持。
-
-**温馨提示：** 定期备份您的存档和 Mod 配置，避免意外损失！
-
+祝你有一个美好的游戏时光，去看下一章吧 ~
